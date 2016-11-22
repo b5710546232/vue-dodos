@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="modal"   v-bind:class="{ 'is-active': modalActive }" >
+    <div class="modal" id="todo-modal"  v-bind:class="{ 'is-active animated fadeIn': modalActive , fadeOut}" >
  <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
@@ -40,12 +40,18 @@ export default {
   data(){
     return {
       modalActive:false,
+      fadeOut:'',
     }
   },
   methods:{
     onCloseModal(){
       console.log('modal')
-      this.modalActive = false
+      this.fadeOut = 'fadeOut'
+      setTimeout(()=>{
+        console.log('should-close')
+        this.modalActive=false
+        this.fadeOut = ''
+      },500)
     },
     onOpenModal(){
       this.modalActive = true
@@ -90,5 +96,7 @@ export default {
   a:hover{
   color: white;
 }
-
+#todo-modal{
+  animation-duration:0.5s;
+}
 </style>
