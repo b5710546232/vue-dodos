@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <navbar></Navbar>
-    <InputTodo id="input-todo"></InputTodo>
+    <Navbar></Navbar>
+    <TodoList></TodoList>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
-import InputTodo from './components/InputTodo.vue'
+import TodoList from './components/TodoList.vue'
 export default {
   name: 'app',
   data () {
@@ -17,7 +17,7 @@ export default {
   },
   components:{
     Navbar,
-    InputTodo
+    TodoList
   }
 }
 </script>

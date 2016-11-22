@@ -13,6 +13,8 @@ export default {
   components: {}
 }
 </script>
-
-<style lang="css">
+<style scoped>
+.input{
+  /*margin: 1%;*/
+}
 </style>
