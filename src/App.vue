@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar></Navbar>
+    <Navbar :addTodo="addTodo"></Navbar>
     <TodoList></TodoList>
   </div>
 </template>
@@ -12,8 +12,18 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      todoInput:''
     }
+  },
+  methods:{
+      addTodo(todo){
+        event.preventDefault()
+        console.log('addTodo',todo);
+
+        todo = ''
+        
+      }
   },
   components:{
     Navbar,

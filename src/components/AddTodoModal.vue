@@ -6,12 +6,14 @@
           <p class="modal-card-title">Add todo</p>
           <button class="delete" @click="onCloseModal"></button>
         </header>
-        <div class="modal-card-body">
+          <div class="modal-card-body">
           <!-- Content ... -->
-          <input type="text" class="input" placeholder="Insert todo..." autofocus>
+          <input type="text" v-model="todoInput" class="input" placeholder="Insert todo..."
+             @keyup.enter="addTodo(todoInput),todoInput=''" autofocus>
+
         </div>
         <footer class="modal-card-foot">
-          <a class="button save-button">Add</a>
+          <a class="button save-button" @click="addTodo(todoInput),todoInput=''" >Add</a>
           <a class="button cancel-button">Cancel</a>
         </footer>
       </div>
@@ -20,9 +22,11 @@
 </template>
 <script>
 export default {
-   props: ['onCloseModal','fadeOut','modalActive'],
+   props: ['onCloseModal','fadeOut','modalActive','addTodo'],
     data () {
-        return {}
+        return {
+          todoInput:''
+        }
     },
     computed: {},
     mounted () {

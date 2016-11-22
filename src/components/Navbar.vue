@@ -8,20 +8,22 @@
         </h1>
       </div>
     </section>
-
-    <div class="nav has-shadow is-info nav-right is-active">
-      <div class="nav-item">
+    <div class="nav has-shadow is-info">
+      <div class="nav-center"></div>
+      <div class="nav-right nav-item">
         <div class="add-button">
           <a class="fa fa-pencil-square-o fa-5x" @click="onOpenModal"></a>
         </div>
       </div>
     </div>
-<AddTodoModal :onCloseModal="onCloseModal" :fadeOut = "fadeOut" :modalActive="modalActive"></AddTodoModal>
+<AddTodoModal :onCloseModal="onCloseModal" :addTodo="addTodo" 
+:fadeOut = "fadeOut" :modalActive="modalActive"></AddTodoModal>
 </div>
 </template>
 <script>
 import AddTodoModal from './AddToDoModal.vue'
 export default {
+  props: ['addTodo'],
   data(){
     return {
       modalActive:false,
@@ -64,18 +66,15 @@ export default {
     color: white;
   }
   
-  .nav-item {
-    position: relative;
-  }
   
   a {
     color: white;
   }
   
-  .add-button {
-
+  .nav-item a{
   }
   .nav-right {
+    align-self: right;
   }
   
   a:hover {
