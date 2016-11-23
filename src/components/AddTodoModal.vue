@@ -30,7 +30,7 @@ export default {
     },
     computed: {},
     mounted () {
-      console.log("",this.modalActive)
+      console.log("active",this.modalActive)
     },
     methods: {},
     components: {}

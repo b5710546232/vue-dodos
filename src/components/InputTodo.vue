@@ -1,5 +1,7 @@
 <template lang="html">
-<input type="text" placeholder="Insert todo..." class = "input">
+<div class="container">
+  <input type="text" placeholder="Insert todo..." class = "input">
+</div>
 </template>
 
 <script>
@@ -15,6 +17,7 @@ export default {
 </script>
 <style scoped>
 .input{
-  /*margin: 1%;*/
+  width: 100%;
+  margin: 1%;
 }
 </style>
