@@ -18,7 +18,7 @@
             </div>
             <div class="column">
               <!--<input type="text" class="input is-fullheight is-fullheight">-->
-              <div class="button is-pulled-right" @click="onCloseModal">Cancel</div>
+              <div class="button is-pulled-right" @click="onCloseInput">Cancel</div>
             </div </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  props:['addTodo','onCloseModal'],
+  props:['addTodo','onCloseInput'],
   data () {
     return {
       modalActive:false,

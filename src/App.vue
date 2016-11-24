@@ -2,10 +2,10 @@
   <div id="app">
     <Navbar :addTodo="addTodo" :onInput="onInput"></Navbar>
     <div class="container wrapper-body">
-      <InputTodo id="todo-input" v-if="inputActive" :class="{ 'animated fadeIn': inputActive,fadeOut}" :onCloseModal="onCloseModal"
-        :addTodo="addTodo" :fadeOut="fadeOut" :modalActive="true">
+      <InputTodo id="todo-input" v-if="inputActive" :class="{ 'animated fadeIn': inputActive,fadeOut}" :onCloseInput="onCloseInput"
+        :addTodo="addTodo" :fadeOut="fadeOut">
       </InputTodo>
-      <TodoList id="todo-list" :todos="todos" :isEditMode="isEditMode"></TodoList>
+      <TodoList id="todo-list" :todos="todos" :isEditMode="isEditMode" :onCloseInput="onCloseInput" :removeToDo="removeToDo"></TodoList>
     </div>
   </div>
 </template>
@@ -27,15 +27,21 @@ export default {
   },
   methods:{
       addTodo(value){
-        event.preventDefault()
+         if (event) event.preventDefault()
         console.log('addTodo',value);
+          let timestamp = new Date().getUTCMilliseconds();
           let todo = {
-          id: 0,
+          id: timestamp,
           title: value,
           completed: false
         }
-      this.todos.push(todo)
+        this.todos.push(todo)
         console.log('todos',this.todos);
+        this.onCloseInput()
+        
+      },
+      removeToDo(todo){
+        this.todos.splice(this.todos.indexOf(todo), 1)
         
       },
       onInput(){
@@ -55,7 +61,7 @@ export default {
         }
         
       },
-      onCloseModal(){
+      onCloseInput(){
         this.fadeOut = 'fadeOut'
         console.log(this.fadeOut)
         setTimeout(()=>{
@@ -73,19 +79,18 @@ export default {
   },
   mounted(){
           for(let i in [1,2,3,4,5,6,7,8]){
-        console.log('i  = ',i)
-          let todo = {
-          id: 0,
-          title: "a;lsdfjk;laskdfj",
-          completed: false
-        }
-      this.todos.push(todo)
-      }
+            console.log('i  = ',i)
+            this.addTodo('Hello'+i)
+          }
   }
 }
 </script>
 
 <style>
+html, body {
+  margin: 0;
+  padding: 0;
+}
   .header {
     /*position: fixed;
      top: 0;

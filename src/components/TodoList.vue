@@ -8,7 +8,7 @@
 
                         <div class="columns is-mobile">
                             <div class="column is-8">
-                                <div v-if="isEditMode">Edditing</div>
+                                <div v-if="isEditMode">{{item.title}}</div>
                                 <div v-else>{{item.title}}</div>
                             </div>
                             <div class="column">
@@ -19,7 +19,7 @@
                                 <!--<input type="text" class="input is-fullheight is-fullheight">-->
                                 <!--<div class="button is-pulled-right" @click="onCloseModal">Cancel</div>-->
                                 <span v-if="isEditMode"><a href="#" class="fa fa-times fa-3x is-pulled-right"
-                                    @click="onCloseModal"></a></span>
+                                    @click="removeToDo(item)"></a></span>
                             </div </div>
                         </div>
                     </div>
@@ -30,7 +30,8 @@
 </template>
 <script>
 export default {
-    props:['todos','isEditMode'],
+    props:['todos','isEditMode','onCloseInput',
+        'removeToDo'],
     data () {
         return {
             list:[1,2,3,4]
