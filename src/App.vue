@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <Navbar  :addTodo="addTodo"></Navbar>
-    <div class="wrapper-body">
-    <InputTodo id="todo-input"></InputTodo>
-    <TodoList id="todo-list" :todos="todos"></TodoList>
+    <!--<AddTodoModal  :onCloseModal="onCloseModal" :addTodo="addTodo" :fadeOut="fadeOut" :modalActive="true"></AddTodoModal>-->
+    <Navbar :addTodo="addTodo" :onInput="onInput"></Navbar>
+    <div class="container wrapper-body">
+      <InputTodo id="todo-input" v-if="inputActive" :class="{ 'animated fadeIn': inputActive,fadeOut}"></InputTodo>
+      <TodoList id="todo-list" :todos="todos"></TodoList>
     </div>
   </div>
 </template>
@@ -12,13 +13,15 @@
 import Navbar from './components/Navbar.vue'
 import InputTodo from './components/InputTodo.vue'
 import TodoList from './components/TodoList.vue'
+import AddTodoModal from './components/AddTodoModal.vue'
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       todoInput:'',
-      todos:[]
+      todos:[],
+      inputActive:false,
+      fadeOut: ''
     }
   },
   methods:{
@@ -34,10 +37,26 @@ export default {
       this.todos.push(todo)
         console.log('todos',this.todos);
         
+      },
+      onInput(){
+        if(this.inputActive){
+          this.fadeOut = 'fadeOut'
+          console.log('fade',this.fadeOut)
+        setTimeout(()=>{
+          this.inputActive=false
+          this.fadeOut = ''
+        },300)
+        }
+        else{
+          this.inputActive = !this.inputActive
+          console.log('sfa',this.inputActive);
+        }
+        
       }
   },
   components:{
     Navbar,
+    // AddTodoModal,
     InputTodo,
     TodoList
   },
@@ -56,39 +75,44 @@ export default {
 </script>
 
 <style>
-  .header{
-     /*position: fixed;
+  .header {
+    /*position: fixed;
      top: 0;
      left: 0;
      width: 100%;*/
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:50px;
-  z-index: 9999;
-  margin:0px auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    margin: 0px auto;
   }
-  .wrapper-body{
-  margin-top:100px;
+  
+  .wrapper-body {
+    margin-top: 100px;
   }
+  
   #todo-list {
     position: relative;
-    z-index: 1;
-  /*margin-top:100px;*/
-  margin-right: 2%;
-  padding:0 0 0 0;
+    /*z-index: 1;*/
+    left: 0;
+    /*margin-top:100px;*/
+    /*margin-right: 2%;*/
+    /*padding: 0 0 0 0;*/
   }
-  #todo-input{
-    margin-right: 4%;
+  
+  #todo-input {
+    /*margin-right: 4%;*/
+    animation-duration: 0.3s;
   }
+  
   #app {
     display: block;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
+    overflow: hidden;
     /*margin-top: 60px;*/
   }
   

@@ -2,12 +2,11 @@
     <div class="wrapper">
         <div v-for="item in todos">
             <div class="container">
-                <div class="card">
+                <div class="card is-desktop is-mobile is-fullwidth">
                     </header>
                     <div class="card-content">
                         <div class="content">
                             {{item.title}}
-                            <small>11:09 PM - 1 Jan 2016</small>
                         </div>
                     </div>
                 </div>
@@ -31,12 +30,11 @@ export default {
 </script>
 <style scoped>
     .container {
-        width: 100%;
+        overflow: hidden;
     }
-
     
     .card {
-        width: 100%;
-        margin: 1%;
+        /*width: 100%;*/
+        margin-bottom: 1%;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="modal" id="todo-modal" v-bind:class="{ 'is-active animated fadeIn': modalActive,fadeOut}">
+    <div class="modal" id="todo-modal" v-bind:class="{ 'is-active animated fadeIn',fadeOut}">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -22,7 +22,7 @@
 </template>
 <script>
 export default {
-   props: ['onCloseModal','fadeOut','modalActive','addTodo'],
+  //  props: ['onCloseModal','fadeOut','modalActive','addTodo'],
     data () {
         return {
           todoInput:''
@@ -37,6 +37,9 @@ export default {
 }
 </script>
 <style scoped>
+.modal{
+  z-index: 9999999;
+}
   #todo-modal {
     animation-duration: 0.5s;
   }

@@ -8,43 +8,24 @@
           </div>
           <div class="column">
             <div class="add-button has-text-right">
-              <a class="fa fa-pencil-square-o fa-4x nav-item" @click="onOpenModal"></a>
+              <a class="fa fa-pencil-square-o fa-4x nav-item" @click="onInput"></a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <AddTodoModal :onCloseModal="onCloseModal" :addTodo="addTodo" :fadeOut="fadeOut" :modalActive="modalActive"></AddTodoModal>
 </template>
 <script>
 import AddTodoModal from './AddToDoModal.vue'
 export default {
-  props: ['addTodo'],
+  props: ['addTodo','onInput'],
   data(){
-    return {
-      modalActive:false,
-      fadeOut:'',
-    }
+    return {}
   },
   methods:{
-    onCloseModal(){
-      console.log('modal')
-      this.fadeOut = 'fadeOut'
-      console.log(this.fadeOut)
-      setTimeout(()=>{
-        console.log('should-close')
-        this.modalActive=false
-        this.fadeOut = ''
-      },500)
-    },
-    onOpenModal(){
-      console.log('open');      
-      this.modalActive = true
-    }
+
   },
-  components:{
-    AddTodoModal
-  }
+  components:{}
   
 }
 </script>
