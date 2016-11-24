@@ -22,7 +22,7 @@
 </template>
 <script>
 export default {
-  //  props: ['onCloseModal','fadeOut','modalActive','addTodo'],
+   props: ['onCloseModal','fadeOut','modalActive','addTodo'],
     data () {
         return {
           todoInput:''

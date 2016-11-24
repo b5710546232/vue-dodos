@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <!--<AddTodoModal  :onCloseModal="onCloseModal" :addTodo="addTodo" :fadeOut="fadeOut" :modalActive="true"></AddTodoModal>-->
     <Navbar :addTodo="addTodo" :onInput="onInput"></Navbar>
     <div class="container wrapper-body">
       <InputTodo id="todo-input" v-if="inputActive" :class="{ 'animated fadeIn': inputActive,fadeOut}" :onCloseModal="onCloseModal"
         :addTodo="addTodo" :fadeOut="fadeOut" :modalActive="true">
       </InputTodo>
-      <TodoList id="todo-list" :todos="todos"></TodoList>
+      <TodoList id="todo-list" :todos="todos" :isEditMode="isEditMode"></TodoList>
     </div>
   </div>
 </template>
@@ -15,7 +14,6 @@
 import Navbar from './components/Navbar.vue'
 import InputTodo from './components/InputTodo.vue'
 import TodoList from './components/TodoList.vue'
-import AddTodoModal from './components/AddTodoModal.vue'
 export default {
   name: 'app',
   data () {
@@ -45,7 +43,8 @@ export default {
           this.fadeOut = 'fadeOut'
           console.log('fade',this.fadeOut)
         setTimeout(()=>{
-          this.inputActive=false
+          this.inputActive = false
+          this.isEditMode = false
           this.fadeOut = ''
         },300)
         }
@@ -61,15 +60,14 @@ export default {
         console.log(this.fadeOut)
         setTimeout(()=>{
           console.log('should-close')
-          this.inputActive=false
-          this.isEditMode = true
+          this.inputActive = false
+          this.isEditMode = false
           this.fadeOut = ''
         },300)
     },
   },
   components:{
     Navbar,
-    // AddTodoModal,
     InputTodo,
     TodoList
   },

@@ -16,7 +16,6 @@
     </div>
 </template>
 <script>
-import AddTodoModal from './AddToDoModal.vue'
 export default {
   props: ['addTodo','onInput'],
   data(){

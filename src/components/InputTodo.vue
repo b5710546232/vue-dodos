@@ -9,12 +9,12 @@
           <div class="columns is-mobile">
             <div class="column is-8">
               <!--<input type="text" class="input is-fullheight is-fullheight" autofocus>-->
-              <input type="text" v-model="todoInput" class="input" placeholder="Insert todo..."
-             @keyup.enter="addTodo(todoInput),todoInput=''" autofocus>
+              <input type="text" v-model="todoInput" class="input" placeholder="Insert todo..." @keyup.enter="addTodo(todoInput),todoInput=''"
+                autofocus>
             </div>
             <div class="column">
               <!--<input type="text" class="input is-fullheight is-fullheight">-->
-              <div class="button is-pulled-right" @click="addTodo(todoInput),todoInput=''" >Add</div>
+              <div class="button is-pulled-right" @click="addTodo(todoInput),todoInput=''">Add</div>
             </div>
             <div class="column">
               <!--<input type="text" class="input is-fullheight is-fullheight">-->
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import AddTodoModal from './AddToDoModal.vue'
 export default {
   props:['addTodo','onCloseModal'],
   data () {
@@ -43,7 +42,6 @@ export default {
   methods: {
   },
   components: {
-    AddTodoModal
   }
 }
 </script>
