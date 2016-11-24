@@ -1,44 +1,46 @@
 <template lang="html">
   <div class="wrapper">
-    <div class="container">
-      <!--<input type="text" placeholder="Insert todo..." class = "input" autofocus>-->
-      <div class="card is-desktop is-mobile is-fullwidth">
-        <div class="card-content">
-          <div class="content">
-            <a href="#" @click="onOpenModal"><span>+ Add</span></a>
+    <!--<div class="container">-->
+    <!--<input type="text" placeholder="Insert todo..." class = "input" autofocus>-->
+    <div class="container card is-desktop is-mobile is-fullwidth">
+      <div class="card-content">
+        <div class="content">
+          <!--<a href="#" @click="onOpenInputText"><span>+ Add</span></a>-->
+          <div class="columns is-mobile">
+            <div class="column is-8">
+              <!--<input type="text" class="input is-fullheight is-fullheight" autofocus>-->
+              <input type="text" v-model="todoInput" class="input" placeholder="Insert todo..."
+             @keyup.enter="addTodo(todoInput),todoInput=''" autofocus>
+            </div>
+            <div class="column">
+              <!--<input type="text" class="input is-fullheight is-fullheight">-->
+              <div class="button is-pulled-right" @click="addTodo(todoInput),todoInput=''" >Add</div>
+            </div>
+            <div class="column">
+              <!--<input type="text" class="input is-fullheight is-fullheight">-->
+              <div class="button is-pulled-right" @click="onCloseModal">Cancel</div>
+            </div </div>
           </div>
         </div>
       </div>
+      <!--</div>-->
     </div>
-  </div>
 </template>
 
 <script>
 import AddTodoModal from './AddToDoModal.vue'
 export default {
+  props:['addTodo','onCloseModal'],
   data () {
     return {
       modalActive:false,
       fadeOut:'',
+      todoInput:'',
     }
   },
   computed: {},
   mounted () {},
   methods: {
-    onCloseModal(){
-      console.log('modal')
-      this.fadeOut = 'fadeOut'
-      console.log(this.fadeOut)
-      setTimeout(()=>{
-        console.log('should-close')
-        this.modalActive=false
-        this.fadeOut = ''
-      },500)
-    },
-    onOpenModal(){
-      console.log('open');      
-      this.modalActive = true
-    }
   },
   components: {
     AddTodoModal
@@ -49,7 +51,6 @@ export default {
   .container {
     overflow: hidden;
   }
-  
   
   .card {
     width: 100%;

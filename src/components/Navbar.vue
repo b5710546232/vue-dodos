@@ -2,12 +2,12 @@
   <div class="wrapper">
     <div class="nav has-shadow is-info">
       <div class="nav-center is-active">
-        <div class="columns is-mobile is-fullwidth">
+        <div class="columns is-mobile">
           <div class="column is-10">
             <div class="nav-item title">Todo</div>
           </div>
           <div class="column">
-            <div class="add-button has-text-right">
+            <div class="add-button is-pulled-right">
               <a class="fa fa-pencil-square-o fa-4x nav-item" @click="onInput"></a>
             </div>
           </div>

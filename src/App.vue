@@ -3,7 +3,9 @@
     <!--<AddTodoModal  :onCloseModal="onCloseModal" :addTodo="addTodo" :fadeOut="fadeOut" :modalActive="true"></AddTodoModal>-->
     <Navbar :addTodo="addTodo" :onInput="onInput"></Navbar>
     <div class="container wrapper-body">
-      <InputTodo id="todo-input" v-if="inputActive" :class="{ 'animated fadeIn': inputActive,fadeOut}"></InputTodo>
+      <InputTodo id="todo-input" v-if="inputActive" :class="{ 'animated fadeIn': inputActive,fadeOut}" :onCloseModal="onCloseModal"
+        :addTodo="addTodo" :fadeOut="fadeOut" :modalActive="true">
+      </InputTodo>
       <TodoList id="todo-list" :todos="todos"></TodoList>
     </div>
   </div>
@@ -19,6 +21,7 @@ export default {
   data () {
     return {
       todoInput:'',
+      isEditMode:false,
       todos:[],
       inputActive:false,
       fadeOut: ''
@@ -28,7 +31,6 @@ export default {
       addTodo(value){
         event.preventDefault()
         console.log('addTodo',value);
-      
           let todo = {
           id: 0,
           title: value,
@@ -48,11 +50,22 @@ export default {
         },300)
         }
         else{
+          this.isEditMode = true
           this.inputActive = !this.inputActive
-          console.log('sfa',this.inputActive);
+          console.log('sfa',this.inputActive)
         }
         
-      }
+      },
+      onCloseModal(){
+        this.fadeOut = 'fadeOut'
+        console.log(this.fadeOut)
+        setTimeout(()=>{
+          console.log('should-close')
+          this.inputActive=false
+          this.isEditMode = true
+          this.fadeOut = ''
+        },300)
+    },
   },
   components:{
     Navbar,
